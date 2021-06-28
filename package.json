@@ -1,0 +1,13 @@
+{
+  "name": "chatbot-wpp",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/thgomes/chatbot-wpp.git",
+  "author": "Thiago Gomes <thiagosiqgomes@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "venom-bot": "^3.0.20"
+  }
+}
