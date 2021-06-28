@@ -1,5 +1,6 @@
 const express = require('express')
 const venom = require('venom-bot')
+const responses = require('./responses.js')
 const app = express()
 
 app.use(express.json())
@@ -27,45 +28,6 @@ function start(client) {
   sendMessages(client)
 }
 
-function responses(client) {
-  client.onMessage((message) => {
-    if (message.body === 'Hi' && message.isGroupMsg === false) {
-      client
-        .sendText(message.from, "Oiie, estou testando meu novo chatbot")
-        .then((result) => {
-          console.log('Result: ', result); //return object success
-        })
-        .catch((erro) => {
-          console.error('Error when sending: ', erro); //return object error
-        })
-
-    } else if (message.body === 'Ola' && message.isGroupMsg === false) {
-      client
-        .sendText(message.from, "Oiie, estou testando meu novo chatbot")
-        .then((result) => {
-          console.log('Result: ', result); //return object success
-        })
-        .catch((erro) => {
-          console.error('Error when sending: ', erro); //return object error
-        })
-
-    } else {
-      client
-        .sendText(message.from,
-          'Olá, como posso ajudar? Digite o número da opção desejada\n' +
-          '  1 - Falar com um atendente\n' +
-          '  2 - Baixar o boleto deste mês\n' +
-          '  3 - Receber a localização da nossa loja física\n')
-        .then((result) => {
-          console.log('Result: ', result); //return object success
-        })
-        .catch((erro) => {
-          console.error('Error when sending: ', erro); //return object error
-        })
-    }
-  })
-}
-
 function sendMessages(client) {
   app.post('/message/text', async(req, res) => {
     await client
@@ -77,5 +39,15 @@ function sendMessages(client) {
         console.error('Error when sending: ', erro); //return object error
       })
     return res.json(req.body)
+  })
+}
+
+const atendentOn = true
+
+function reciveMessage(client, atendentOn) {
+  client.onMessage((message) => {
+    if (message.isGroupMsg == false && atendentOn) {
+      
+    }
   })
 }
