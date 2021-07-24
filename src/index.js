@@ -41,13 +41,3 @@ function sendMessages(client) {
     return res.json(req.body)
   })
 }
-
-const atendentOn = true
-
-function reciveMessage(client, atendentOn) {
-  client.onMessage((message) => {
-    if (message.isGroupMsg == false && atendentOn) {
-      
-    }
-  })
-}
